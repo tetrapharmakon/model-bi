@@ -1,0 +1,138 @@
+\documentclass[a4paper,12pt]{amsart}
+
+\input{preambolo}
+% \usepackage{lmodern-standard}
+
+\def\proP{\textsc{p}}
+\def\proQ{\textsc{q}}
+\def\proH{\textsc{h}}
+\def\proL{\textsc{l}}
+\def\proK{\textsc{k}}
+\def\proG{\textsc{g}}
+
+\title{locally model bicategories}
+\author{FL BC}
+\begin{document}
+\begin{abstract}
+The theory of bicategories $\A$ where each hom-category $\A(X,Y)$ has a model structure.
+\end{abstract}
+\maketitle
+\def\Prof{\cate{Prof}}
+\section*{Introduction}
+Here be intro
+
+We recall some of the definition which will be useful later, to mantain a certain degree of self-containedness.
+\begin{definition}[Two-variable adjunctions]
+
+\end{definition}
+\begin{definition}[Monoidal model category]
+A symmetric monoidal model category $\C$ is a model category equipped with the structure of a closed symmetric monoidal category, such that these two structure interact well:
+\begin{itemize}
+\item 
+\item 
+\end{itemize}
+\end{definition}
+\begin{definition}[Left and Right Quillen functor]
+
+\end{definition}
+\begin{definition}[Quillen two-variable adjunction]
+
+\end{definition}
+
+\section{The model bicategory of profunctors}
+\def\Prof{\cate{Prof}}
+\begin{definition}[The bicategory of $\V$-profunctors]\label{profdef}
+Let $\V$ be a Bénabou cosmos\footnote{\ie a symmetric monoidal closed, bicomplete category}. Define a bicategory $\Prof$ having
+\begin{itemize}
+\item 0-cells (objects) those of $\V$-$\Cat$ (small $\V$-categories $\A,\B,\C,\D,\dots$);
+\item 1-cells $\proP,\proQ,\dots$, depicted as arrows $\A\pto \B$, the functors $\A^\opp\times\B\to \V$;
+\item 2-cells $\alpha\colon\proP\Rightarrow\proQ$ the natural transformations between these functors.
+\end{itemize}
+Given two contiguous 1-cells $\A\stackrel{\proP}{\pto}\B\stackrel{\proQ}{\pto}\C$ we define their \emph{composition} $\proQ \diamond \proP$ as the coend
+\[
+\proQ \diamond \proP(a,c) := \int^x \proP(a,x)\times\proQ(x,c)
+\]
+\end{definition}
+The 1-cells of $\Prof$ are called \emph{profunctors}, or more rarely \emph{distributors} (following the equation $\text{funct\emph{ions}} : \text{funct\emph{ors}} = \text{distribut\emph{ions}} : \text{distribut\emph{ors}}$), \emph{correspondences} (consider the case of $\mathcal V=\{0,1\}$ where $\A, \B$ are discrete categories), or \emph{bimodules} (consider the case where $\mathcal V=\cate{Ab}$ and $\A,\B$ are rings; see \cite{nashphd} for applications in this sense).
+\begin{remark}
+There is an alternative, but equivalent definition for $\proQ \diamond \proP$ which exploits the universal property of $\widehat{\C}$: any profunctor $\proP\colon \A\pto \cate B$ can be identified with its \emph{mate} under the adjunction giving the cartesian closed structure of $\Cat$,
+\[
+\Fun(\A^\opp\times \B ,\Sets)\cong \Fun(\B, [\A^\opp,\Sets])
+\]
+\ie with a functor $\widehat\proP\colon\cate B\to \widehat{\A}$ obtained as $b\mapsto \proP(\firstblank,b)$. Hence we can define the composition $\A\stackrel{\proP}{\pto}\cate B\stackrel{\proQ}{\pto}\C$ to be $\Lan_\yon \widehat\proP\circ\widehat\proQ$:
+\[\xymatrix{
+& \B \ar[d]_{\yon }\ar[r]^{\widehat\proP}& \widehat{\A} \\
+\C \ar[r]_{\widehat\proQ}& \widehat{\B} \ar[ur]_{\Lan_\yon \widehat\proP}& 
+}\]
+\end{remark}
+This is equivalent to the previous definition, in view of the characterization
+of a left Kan extension as a coend in $\widehat{\A}$ (\cite[Eq.
+(37)]{cofriend}):
+\[
+\Lan_\yon \widehat\proP\cong \int^b\widehat{\B}(\yon_b,\firstblank)\cdot \widehat\proP(b).
+\]
+Since in $\Sets$ copower coincides with product (\ie $X\cdot Y\cong X\times Y$,
+since $\Sets(X\cdot Y,B)\cong \Sets(X,\Sets(Y,B))\cong \Sets(X\times Y,B)$,
+naturally in $B$), we have
+\begin{align*}
+\Lan_\yon \widehat{\proP}(\widehat{\proQ}(c)) &\cong \int^b
+	\widehat{\B}(\yon_b,\widehat{\proQ}(c))\cdot \widehat{\proP}(b)\\
+&\cong \int^b \widehat{\proQ}(c)(b)\cdot \widehat{\proP}(b)\cong \int^B \proP(\firstblank,b)\times \proQ(b,c).
+\end{align*}
+\begin{lemma}
+Composition of profunctors is a bifunctor 
+\[
+\diamond \colon \Prof(\A,\B)\otimes \Prof(\B,\C)\to \Prof(\A,\C).
+\]
+\end{lemma}
+\begin{proof}
+The only nontrivial thing to verify is the ``interchange'' law
+\[
+nohdfoainfoa
+\]
+This is easy in view of the fact that the diagram
+\[
+fnaoinfoa
+\]
+commutes, due to the bifunctor $\otimes \colon \V\times \V \to \V$, and then
+co-ending this commutative square over $b\in\B$ preserves this property giving
+the result.
+\end{proof}
+\begin{example}
+The canonical example of a \emph{locally model 2-category} is the bicategory
+$\V$-profunctors where $\V$ is a \emph{model} cosmos, \ie
+\begin{itemize}
+\item $\V$ is still a symmetric monoidal closed, bicomplete category,
+\item with a model structure $(\wk,\cof,\fib)$
+\item such that the ``monoid axiom'' is fulfilled.
+\end{itemize}
+Each $\Prof(\A,\B)$ can be endowed with many model structures (injective or
+projective, defining classes objectwise on $\V$-natural transformations
+$\eta\colon F\Rightarrow G$ between $\V$-functors).
+\end{example}
+Composition of profunctors is defined so and so.
+\begin{remark}
+Composition of profunctors satisfies the interchange rule.
+\end{remark}
+\begin{remark}
+Composition of profunctors has adjoints on such and such sides.
+\end{remark}
+\begin{definition}
+The injective-projective model structure.
+\end{definition}
+\begin{proposition}
+The composition functor is a left Quillen; this entails in particular that the pushout product $\hat\diamond$ of two cofibrations is again a cofibration, and spushout product $\hat\diamond$ of two cofibrations is again a cofibration, and some other things.
+\end{proposition}
+\section{The abstract theory of model bicategories}
+Other examples
+\begin{itemize}
+\item monoidal categories and lax profunctors, operads and "operadic profunctors" etc.
+\item take a simplicial category $C$ and contruct a locally model 2-category $\widetilde{C}$ whose objects are the same as those of $C$ and whose mapping model categories are the slices $\sSet/[X,Y]$. 
+\item If $\V$ is cartesian closed then you can probably do the same with a generic $\V$-enriched category.
+\end{itemize}
+A general theory
+
+\bibliography{allofthem}{}
+\bibliographystyle{amsalpha}
+\hrulefill
+\end{document}
