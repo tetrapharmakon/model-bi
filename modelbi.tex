@@ -8,8 +8,11 @@
 \def\proH{\textsc{h}}
 \def\proL{\textsc{l}}
 \def\proK{\textsc{k}}
+\def\yon{y}
 \def\proG{\textsc{g}}
+\def\Lan{\mathsf{Lan}}
 
+\usepackage[all,2cell]{xy}
 \title{locally model bicategories}
 \author{FL BC}
 \begin{document}
@@ -42,7 +45,7 @@ A symmetric monoidal model category $\C$ is a model category equipped with the s
 \section{The model bicategory of profunctors}
 \def\Prof{\cate{Prof}}
 \begin{definition}[The bicategory of $\V$-profunctors]\label{profdef}
-Let $\V$ be a Bénabou cosmos\footnote{\ie a symmetric monoidal closed, bicomplete category}. Define a bicategory $\Prof$ having
+Let $\V$ be a Bénabou cosmos\footnote{i.e. a symmetric monoidal closed, bicomplete category}. Define a bicategory $\Prof$ having
 \begin{itemize}
 \item 0-cells (objects) those of $\V$-$\Cat$ (small $\V$-categories $\A,\B,\C,\D,\dots$);
 \item 1-cells $\proP,\proQ,\dots$, depicted as arrows $\A\pto \B$, the functors $\A^\opp\times\B\to \V$;
@@ -59,7 +62,7 @@ There is an alternative, but equivalent definition for $\proQ \diamond \proP$ wh
 \[
 \Fun(\A^\opp\times \B ,\Sets)\cong \Fun(\B, [\A^\opp,\Sets])
 \]
-\ie with a functor $\widehat\proP\colon\cate B\to \widehat{\A}$ obtained as $b\mapsto \proP(\firstblank,b)$. Hence we can define the composition $\A\stackrel{\proP}{\pto}\cate B\stackrel{\proQ}{\pto}\C$ to be $\Lan_\yon \widehat\proP\circ\widehat\proQ$:
+i.e. with a functor $\widehat\proP\colon\cate B\to \widehat{\A}$ obtained as $b\mapsto \proP(\_,b)$. Hence we can define the composition $\A\stackrel{\proP}{\pto}\cate B\stackrel{\proQ}{\pto}\C$ to be $\Lan_\yon \widehat\proP\circ\widehat\proQ$:
 \[\xymatrix{
 & \B \ar[d]_{\yon }\ar[r]^{\widehat\proP}& \widehat{\A} \\
 \C \ar[r]_{\widehat\proQ}& \widehat{\B} \ar[ur]_{\Lan_\yon \widehat\proP}& 
@@ -69,15 +72,15 @@ This is equivalent to the previous definition, in view of the characterization
 of a left Kan extension as a coend in $\widehat{\A}$ (\cite[Eq.
 (37)]{cofriend}):
 \[
-\Lan_\yon \widehat\proP\cong \int^b\widehat{\B}(\yon_b,\firstblank)\cdot \widehat\proP(b).
+\Lan_\yon \widehat\proP\cong \int^b\widehat{\B}(\yon_b,\_)\cdot \widehat\proP(b).
 \]
-Since in $\Sets$ copower coincides with product (\ie $X\cdot Y\cong X\times Y$,
+Since in $\Sets$ copower coincides with product (i.e. $X\cdot Y\cong X\times Y$,
 since $\Sets(X\cdot Y,B)\cong \Sets(X,\Sets(Y,B))\cong \Sets(X\times Y,B)$,
 naturally in $B$), we have
 \begin{align*}
 \Lan_\yon \widehat{\proP}(\widehat{\proQ}(c)) &\cong \int^b
 	\widehat{\B}(\yon_b,\widehat{\proQ}(c))\cdot \widehat{\proP}(b)\\
-&\cong \int^b \widehat{\proQ}(c)(b)\cdot \widehat{\proP}(b)\cong \int^B \proP(\firstblank,b)\times \proQ(b,c).
+&\cong \int^b \widehat{\proQ}(c)(b)\cdot \widehat{\proP}(b)\cong \int^B \proP(\_,b)\times \proQ(b,c).
 \end{align*}
 \begin{lemma}
 Composition of profunctors is a bifunctor 
@@ -100,7 +103,7 @@ the result.
 \end{proof}
 \begin{example}
 The canonical example of a \emph{locally model 2-category} is the bicategory
-$\V$-profunctors where $\V$ is a \emph{model} cosmos, \ie
+$\V$-profunctors where $\V$ is a \emph{model} cosmos, i.e.
 \begin{itemize}
 \item $\V$ is still a symmetric monoidal closed, bicomplete category,
 \item with a model structure $(\wk,\cof,\fib)$
@@ -128,7 +131,8 @@ Other examples
 \begin{itemize}
 \item monoidal categories and lax profunctors, operads and "operadic profunctors" etc.
 \item take a simplicial category $C$ and contruct a locally model 2-category $\widetilde{C}$ whose objects are the same as those of $C$ and whose mapping model categories are the slices $\sSet/[X,Y]$. 
-\item If $\V$ is cartesian closed then you can probably do the same with a generic $\V$-enriched category.
+\item If $\V$ is cartesian closed then you can probably do the same with a generic $\V$-enriched category;
+\item automata valued in a Cartesian closed, model, nice, category (e.g. $\sSet$)
 \end{itemize}
 A general theory
 
